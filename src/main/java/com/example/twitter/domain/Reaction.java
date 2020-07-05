@@ -2,37 +2,24 @@ package com.example.twitter.domain;
 
 import java.sql.Timestamp;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.ToString;
 
-@Getter
-@Setter
+@Data
 @Entity
-@Table(name="reaction")
+@ToString
 public class Reaction {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	 
-    @OneToOne
-    @JsonIgnore
-    private User user;
- 
-    @OneToOne
-    private Post post;
+	@EmbeddedId
+	@JsonIgnoreProperties("fav")
+ 	private ReactionId reactionId;
     
     private Timestamp dateReaction;
     
-    @JsonIgnore
-    private boolean isFav;
+  
 }

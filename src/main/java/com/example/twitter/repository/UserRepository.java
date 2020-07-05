@@ -8,6 +8,6 @@ import com.example.twitter.domain.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	User getOneByUserName(String userName);
+	User getOneByUsername(String username);
 
 }

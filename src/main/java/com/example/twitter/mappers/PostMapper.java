@@ -8,11 +8,28 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.example.twitter.domain.Post;
+import com.example.twitter.model.NewTweetDTO;
 import com.example.twitter.model.PostDTO;
 
 
 @Component
 public class PostMapper {
+	
+	public Post mapToNewTweet(NewTweetDTO tDTO) {
+		Assert.notNull(tDTO, "The user must not be null");
+		Post p = new Post();
+        // must not set id !
+        BeanUtils.copyProperties(tDTO, p);
+        return p;
+	}
+	
+    public NewTweetDTO mapToNewTweet(Post p) {
+        Assert.notNull(p, "The user must not be null");
+        NewTweetDTO pDTO = new NewTweetDTO();
+        
+        BeanUtils.copyProperties(p, pDTO);
+        return pDTO;
+    }
 	
 	public Post mapTo(PostDTO pDTO) {
 		Assert.notNull(pDTO, "The user must not be null");
@@ -21,7 +38,7 @@ public class PostMapper {
         BeanUtils.copyProperties(pDTO, p);
         return p;
     }
-
+	
     public PostDTO mapTo(Post p) {
         Assert.notNull(p, "The user must not be null");
         PostDTO pDTO = new PostDTO();

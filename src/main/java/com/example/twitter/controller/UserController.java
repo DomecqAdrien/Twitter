@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.twitter.model.RegisterDTO;
 import com.example.twitter.model.UserDTO;
 import com.example.twitter.services.UserService;
 
@@ -30,7 +33,7 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.POST, headers = {"Content-type=application/json"}, value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public UserDTO register(@RequestBody UserDTO user) {
+	public RegisterDTO register(@Validated @RequestBody RegisterDTO user) {
 		System.out.println(user.toString());
 		return userService.addUser(user);	
 	}
