@@ -108,8 +108,7 @@ public class PostService {
 		User u = userRepository.getOne(userId);
 		System.out.println("nb follows :"+u.getFollowing().size());
 		 for (Follow f: u.getFollowing()) {
-			 timeline.addAll(postRepository.getAllPostsByUserId(f.getFollowId().getFollowed().getId()));
-			 
+			 timeline.addAll(postRepository.getAllPostsByUserId(f.getFollowId().getFollowed().getId()));	 
 		 }
 		
 		return mapper.mapTo(timeline);
