@@ -20,7 +20,7 @@ public class ReactionId implements Serializable {
     private User user;
  
     @OneToOne
-    @JsonIgnoreProperties({"favs","reposts","user"})
+    @JsonIgnoreProperties({"favs","reposts","user","reponses"})
     private Post post;
     
     private boolean isFav;

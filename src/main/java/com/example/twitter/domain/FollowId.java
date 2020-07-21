@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
+@SuppressWarnings("unused")
 @Getter @Setter
 @Embeddable
 public class FollowId implements Serializable {
@@ -21,13 +22,11 @@ public class FollowId implements Serializable {
 	private static final long serialVersionUID = 3030475631573445635L;
 
 	@OneToOne
-	@JsonManagedReference
-	@JsonIgnoreProperties({"favs","reposts","followers","following"})
+	@JsonIgnoreProperties({"favs","reposts","following"})
 	private User following;
 	
 	@OneToOne
-	@JsonManagedReference
-	@JsonIgnoreProperties({"favs","reposts","followers","following"})
+	@JsonIgnoreProperties({"favs","reposts","followers"})
 	private User followed; 
 
 	@Override

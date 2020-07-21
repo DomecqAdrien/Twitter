@@ -9,5 +9,4 @@ import com.example.twitter.domain.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 	User getOneByUsername(String username);
-
 }

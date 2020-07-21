@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter @Setter
 public class NewTweetDTO {
 	
-	public long id;
+	public Long id;
 	public String message;
 	public int origin;
 	public Timestamp timestamp;

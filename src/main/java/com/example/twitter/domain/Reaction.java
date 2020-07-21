@@ -16,7 +16,7 @@ import lombok.ToString;
 public class Reaction {
 	
 	@EmbeddedId
-	@JsonIgnoreProperties("fav")
+	@JsonIgnoreProperties({"reponses", "fav"})
  	private ReactionId reactionId;
     
     private Timestamp dateReaction;
